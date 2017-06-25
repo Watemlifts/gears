@@ -15,7 +15,7 @@ This project was written for personal use, but is freely available to anyone who
 ## install
 
 - download, clone or fork this repository.
-- add directories to the ```./template``` directory.
+- add directories to the ```./template``` directory you want scaffolded.
 - install scaffold with ```npm install -g```.
 
 ## viewing installed templates
@@ -49,7 +49,3 @@ $ cd myapp
 $ scaffold typescript-console-project
 ```
 This will copy the contents of this template into the current working directory.
-
-## updating templates
-
-To update, repeat install proceedure. note, doing so will overwrite existing templates, so be sure to keep your existing templates safe under version control.

@@ -1,0 +1,19 @@
+{
+  "name": "scaffold",
+  "version": "0.0.0",
+  "description": "simple directory scaffolding",
+  "bin": {
+    "scaffold": "./scaffold"
+  },
+  "preferGlobal": true,
+  "keywords": [
+    "scaffold",
+    "mirror"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sinclairzx81/scaffold"
+  },
+  "author": "sinclairzx81",
+  "license": "MIT"
+}

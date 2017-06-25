@@ -50,7 +50,7 @@ const help      = () => {
   console.log(``)
   console.log(`usage: `)
   console.log(``)
-  console.log(`  scaffold [template]`)
+  console.log(`  scaffold [template-name]`)
   console.log(``)
   console.log(`installed:`)
   console.log(``)

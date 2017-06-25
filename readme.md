@@ -4,9 +4,7 @@ simple directory scaffolding for node.
 
 ## overview
 
-scaffold is a simple directory scaffolding tool for provisioning common directory structures. The project is based around 
-npm, where users npm install -g the scaffold cli + their own templates (see template directory). By doing so, scaffold
-will source the template directory, allowing each template to be copied into the current working directory via.
+scaffold is a simple directory scaffolding tool for provisioning common directory structures. The project is based around npm, where users npm install -g the scaffold cli + their own templates (see template directory). By doing so, scaffold will source the template directory, allowing each template to be copied into the current working directory via.
 
 ```
 $ scaffold [template-name]

@@ -1,0 +1,17 @@
+{
+  "name": "client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./target/index.js",
+  "scripts": {
+    "clean": "shx rm -rf ./target/index.js && shx rm -rf ./node_modules",
+    "build": "tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom",
+    "watch": "tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --watch",
+    "start": "fsweb ./target"
+  },
+  "keywords": [
+    "server"
+  ],
+  "author": "sinclairzx81",
+  "license": "MIT"
+}

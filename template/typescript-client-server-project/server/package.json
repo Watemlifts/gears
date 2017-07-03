@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "shx rm -rf ./target && shx rm -rf ./node_modules",
+    "build": "tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom",
+    "watch": "tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --watch",
+    "start": "fsrun ./target/index.js [node ./target/index.js]"
+  },
+  "keywords": [
+    "client"
+  ],
+  "author": "sinclairzx81",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.3",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.0.36",
+    "@types/socket.io": "^1.4.29"
+  }
+}

@@ -47,7 +47,7 @@ const build = async () => {
   await shell("cd ./server && npm install")
   await shell("cd ./server && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom")
 }
-s
+
 const run = async () => {
   await build()
   await Promise.all([

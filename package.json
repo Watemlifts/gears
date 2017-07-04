@@ -1,9 +1,9 @@
 {
-  "name": "scaffold",
-  "version": "0.0.0",
-  "description": "simple directory scaffolding",
+  "name": "gears",
+  "version": "1.0.0",
+  "description": "simple directory scaffolding for node.",
   "bin": {
-    "scaffold": "./scaffold"
+    "gears": "./gears"
   },
   "preferGlobal": true,
   "keywords": [
@@ -12,7 +12,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sinclairzx81/scaffold"
+    "url": "https://github.com/sinclairzx81/gears"
   },
   "author": "sinclairzx81",
   "license": "MIT"

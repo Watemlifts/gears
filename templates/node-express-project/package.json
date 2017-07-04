@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "express / socket.io web application",
+  "main": "index.js",
+  "author": "sinclairzx81",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.0.36"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

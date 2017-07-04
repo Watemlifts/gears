@@ -1,10 +1,10 @@
 /*--------------------------------------------------------------------------
 
-gears - simple project scaffolding for node.
+project-name
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Haydn Paterson (sinclair) <haydn.developer@gmail.com>
+Copyright (c) 2016 Haydn Paterson (sinclair) <haydn.developer@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,3 +25,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
+
+import * as express from "express"
+import * as ws      from "ws"
+import * as http    from "http"
+
+const server = http.createServer((req, res) => res.end("hello"))
+const wss    = new ws.Server({server})
+
+wss.on("connection", socket => {
+  const handle = setInterval(() => socket.send("server time: " + new Date().toTimeString()), 1000)
+  socket.on("close", () => clearInterval(handle))
+})
+
+server.listen(5001)

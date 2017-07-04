@@ -1,51 +1,54 @@
-# scaffold
+# gears
 
 simple directory scaffolding for node.
 
 ## overview
 
-scaffold is a simple directory scaffolding tool for provisioning common directory structures. The project is based around npm, where users npm install -g the scaffold cli + their own templates (see template directory). By doing so, scaffold will source the template directory, allowing each template to be copied into the current working directory via.
+gears is a simple directory scaffolding tool for provisioning common directory structures. gears will source the contents of the ```./templates``` directory, and simply copies the templates contents into the current working directory with the following.
 
 ```
-$ scaffold [template-name]
+$ gears [template-name]
 ```
 
-This project was written for personal use, but is freely available to anyone who finds it useful. The project comes with two typescript templates which i use personally, however users are free to copy, clone, fork reproduce this project at will.
+This project was written for personal use, but is freely available to anyone who finds it useful. The project comes with some existing templates which i use personally, however users are free to copy, clone, fork reproduce this project at will.
 
 ## install
 
 - download, clone or fork this repository.
-- add directories to the ```./template``` directory you want scaffolded.
-- install scaffold with ```npm install -g```.
+- install gears as a desired location with ```npm install -g```.
+- add / remove directories to the ```./templates``` directory you want scaffolded.
+- run ```$ gears [template-name]``` to copy template into current working directory.
 
 ## viewing installed templates
 
 To see a list of installed templates type:
 
 ```
-$ scaffold
+$ gears
 ```
 which results in:
 ```
 usage: 
 
-  scaffold [template-name]
+  gears [template-name]
 
 installed:
 
-- typescript-browser-project
+- browser-library-project
 
-- typescript-console-project
+- node-express-project
 
+- node-library-project
+
+- node-websocket-project
 ```
 
 ## installing templates
 
-The following will install the ```typecript-console-project``` template included with this repository.
+Once gears is installed following will install the ```node-express-project``` template included with this repository.
 
 ```
 $ mkdir myapp
 $ cd myapp
-$ scaffold typescript-console-project
+$ gears node-express-project
 ```
-This will copy the contents of this template into the current working directory.

@@ -1,10 +1,10 @@
 /*--------------------------------------------------------------------------
 
-gears - simple project scaffolding for node.
+project-name
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Haydn Paterson (sinclair) <haydn.developer@gmail.com>
+Copyright (c) 2016 Haydn Paterson (sinclair) <haydn.developer@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,3 +25,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
+
+export function helloworld() {
+  console.log("hello world")
+}

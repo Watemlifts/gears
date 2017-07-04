@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------
 
-gears - simple project scaffolding for node.
+project-name
 
 The MIT License (MIT)
 
@@ -25,3 +25,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
+
+import * as express   from "express"
+import * as http      from "http"
+import * as path      from "path"
+
+const app    = express()
+const server = http.createServer(app)
+
+app.use(express.static(path.join(__dirname, "public")))
+
+server.listen(5000)

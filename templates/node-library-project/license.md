@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------
 
-gears - simple project scaffolding for node.
+project-name
 
 The MIT License (MIT)
 

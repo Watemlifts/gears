@@ -26,16 +26,34 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-import * as express from "express"
-import * as ws      from "ws"
-import * as http    from "http"
+import {Server} from "./server"
 
-const server = http.createServer((req, res) => res.end("hello"))
-const wss    = new ws.Server({server})
+const server = new Server()
 
-wss.on("connection", socket => {
-  const handle = setInterval(() => socket.send("server time: " + new Date().toTimeString()), 1000)
-  socket.on("close", () => clearInterval(handle))
+server.request((request, response, sockets) => {
+  response.end("web socket - server")
 })
 
-server.listen(5001)
+server.connect((socket, sockets) => {
+  console.log("socket: connected")
+  sockets.forEach(socket => {
+    socket.send("socket: connected")
+  })
+})
+
+server.message((data, socket, sockets) => {
+  console.log("socket: message", data)
+})
+
+server.disconnect((socket, sockets) => {
+  console.log("socket: disconnected")
+  sockets.forEach(socket => {
+    socket.send("socket: disconnected")
+  })
+})
+
+server.listen(5001).then(port => {
+  console.log(`server: listening on port ${port}`)
+})
+
+

@@ -57,7 +57,7 @@ const run = async () => {
     // server
     shell("cd ./server && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --watch"),
     shell("cd ./server && fsrun ./target/index.js [node ./target/index.js]"),
-    shell("fsrun server/target/index.js [touch client/target/index.js]")
+    shell("fsrun server/target/index.js [shx touch client/target/index.js]")
   ])
 }
 //------------------------------------------------------

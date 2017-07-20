@@ -26,13 +26,14 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-setTimeout(() => {
-  
   const socket     = new WebSocket("ws://localhost:5001/")
   socket.onopen    = () => console.log("open")
   socket.onmessage = mes => console.log(mes.data)
   socket.onerror   = err => console.log(err)
   socket.onclose   = () => console.log("closed")
-}, 100)
+  setInterval(() => {
+    socket.send("hello from server")
+  }, 1000)
+
 
 

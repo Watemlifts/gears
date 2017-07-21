@@ -42,20 +42,20 @@ const clean = async() => {
 const build = async () => {
   // client
   await shell("cd ./client && npm install")
-  await shell("cd ./client && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom")
+  await shell("cd ./client && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --removeComments")
   // server
   await shell("cd ./server && npm install")
-  await shell("cd ./server && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom")
+  await shell("cd ./server && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --removeComments")
 }
 
 const run = async () => {
   await build()
   await Promise.all([
     // client
-    shell("cd ./client && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --watch"),
+    shell("cd ./client && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --removeComments --watch"),
     shell("cd ./client && fsweb ./target 5000 > /dev/null"),
     // server
-    shell("cd ./server && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --watch"),
+    shell("cd ./server && tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --removeComments --watch"),
     shell("cd ./server && fsrun ./target/index.js [node ./target/index.js]"),
     shell("fsrun server/target/index.js [shx touch client/target/index.js]")
   ])

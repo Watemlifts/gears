@@ -26,34 +26,29 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-import {Server} from "./server"
+import {Server, JsonSerializer} from "./micron/index"
 
-const server = new Server()
+const server = new Server({
+  serializer: new JsonSerializer()
+})
 
 server.request((request, response, sockets) => {
-  response.end("web socket - server")
+  response.end("socket: server")
 })
 
 server.connect((socket, sockets) => {
   console.log("socket: connected")
-  sockets.forEach(socket => {
-    socket.send("socket: connected")
-  })
 })
 
 server.message((data, socket, sockets) => {
   console.log("socket: message", data)
+  socket.send("hello from server")
 })
 
 server.disconnect((socket, sockets) => {
   console.log("socket: disconnected")
-  sockets.forEach(socket => {
-    socket.send("socket: disconnected")
-  })
 })
 
-server.listen(5001).then(port => {
-  console.log(`server: listening on port ${port}`)
-})
+server.listen(5001)
 
 

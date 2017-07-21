@@ -1,6 +1,6 @@
 /*--------------------------------------------------------------------------
 
-project-name
+micron - http + websocket server.
 
 The MIT License (MIT)
 
@@ -26,26 +26,16 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-import {Socket, JsonSerializer} from "./micron/index"
+import {Socket} from "./socket"
+import {
+  ISerializer,
+  DefaultSerializer,
+  JsonSerializer
+} from "./serialize"
 
-const socket = new Socket({
-  endpoint  : "ws://localhost:5001",
-  serializer: new JsonSerializer()
-})
-
-socket.connect(() => {
-  console.log("socket: connected")
-})
-socket.message(message => {
-  console.log("socket: " + message)
-})
-socket.error(error => {
-  console.log("socket: " + error)
-})
-socket.disconnect(() => {
-  console.log("socket: disconnected")
-})
-
-setInterval(() => {
-  socket.send("hello from client")
-}, 1000)
+export {
+  Socket,
+  ISerializer,
+  DefaultSerializer,
+  JsonSerializer
+}

@@ -1,0 +1,23 @@
+{
+  "name": "project-name",
+  "version": "1.0.0",
+  "description": "project-name",
+  "main": "./target/index.js",
+  "test": "node ./target/test.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sinclairzx81/project-name"
+  },
+  "author": "sinclairzx81",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^16.0.0",
+    "@types/react-dom": "^15.5.1",
+    "@types/react-router": "^4.0.14"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router": "^4.1.2"
+  }
+}

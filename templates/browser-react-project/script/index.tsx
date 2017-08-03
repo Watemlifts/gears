@@ -26,29 +26,75 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
 // reference react dependencies as part of the compilation.
-//---------------------------------------------------------------------------
+//------------------------------------------------------------------------------------
 /// <reference path="../node_modules/react/dist/react.min.js" />
 /// <reference path="../node_modules/react-dom/dist/react-dom.min.js" />
 /// <reference path="../node_modules/react-router/umd/react-router.min.js" />
-//---------------------------------------------------------------------------
+/// <reference path="../node_modules/react-router-dom/umd/react-router-dom.min.js" />
+//------------------------------------------------------------------------------------
 
-import * as React       from "react";
-import * as ReactDOM    from "react-dom"
-import * as ReactRouter from "react-router"
+import * as React                          from "react";
+import * as ReactDOM                       from "react-dom"
+import { HashRouter, Route, Switch, Link } from "react-router-dom"
+
+export class HomePage extends React.Component {
+  render() {
+    return <p>home page</p>
+  }
+}
+
+export class AboutPage extends React.Component {
+  render() {
+    return <p>about page</p>
+  }
+}
+
+export class ContactPage extends React.Component {
+  render() {
+    return <p>contact page</p>
+  }
+}
+
+export class Header extends React.Component {
+  render() {
+    return (
+      <div className="header">
+        <h1>gears</h1>
+        <div className="nav">
+          <ul>
+            <li><Link to="/">home</Link></li>
+            <li><Link to="/about">about</Link></li>
+            <li><Link to="/contact">contact</Link></li>
+          </ul>
+        </div>
+      </div>
+    )
+  }
+}
+
+export class Content extends React.Component {
+  render() {
+    return (<div className="content">
+      <Switch>
+        <Route exact path='/' component={HomePage} />
+        <Route path='/about' component={AboutPage} />
+        <Route path="/contact" component={ContactPage} />
+      </Switch>
+      </div>)
+  }
+}
 
 export class App extends React.Component {
   render() {
     return <div className="app">
-      <div className="header">
-        <h1>gears</h1>
-      </div>
-      <div className="content">
-        <p>react + typescript project</p>
-      </div>
+      <Header />
+      <Content />
     </div>
   }
 }
 
-ReactDOM.render(<App />, document.querySelector("body"))
+ReactDOM.render((<HashRouter>
+  <App />  
+</HashRouter>), document.querySelector("body"))

@@ -30,7 +30,7 @@ const cli = async (args, tasks) => {
 //------------------------------------------------------
 //  constants:
 //------------------------------------------------------
-const TYPESCRIPT = "tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --removeComments"
+const TYPESCRIPT = "tsc-bundle ./test/index.ts ./target/index.js --lib es2015,dom --removeComments"
 
 //------------------------------------------------------
 //  tasks:

@@ -31,7 +31,7 @@ const cli = async (args, tasks) => {
 //  constants:
 //------------------------------------------------------
 
-const TYPESCRIPT = "tsc-bundle ./script/index.tsx ./target/index.js --allowJs --lib es2015,dom --jsx react --globalmap react=React,react-dom=ReactDOM,react-router=ReactRouter,react-router-dom=ReactRouterDOM --removeComments"
+const TYPESCRIPT = "tsc-bundle ./script/index.tsx ./target/index.js --allowJs --lib es2015,dom --jsx react --importAs react=React,react-dom=ReactDOM,react-router=ReactRouter,react-router-dom=ReactRouterDOM --removeComments"
 const LESS       = "lessc ./styles/index.less ./target/index.css"
 
 //------------------------------------------------------

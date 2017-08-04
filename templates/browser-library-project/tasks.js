@@ -1,6 +1,6 @@
-//----------------------------------------------------------
-// task automation script
-//----------------------------------------------------------
+//------------------------------------------------------
+// task helper scripts:
+//------------------------------------------------------
 const shell = (command) => new Promise((resolve, reject) => {
   const { spawn } = require('child_process')
   const windows = /^win/.test(process.platform)
@@ -10,6 +10,15 @@ const shell = (command) => new Promise((resolve, reject) => {
   ls.stderr.pipe(process.stderr)
   ls.on('close', (code) => resolve(code))
 })
+const watch = (directory, func) => new Promise((resolve, reject) => {
+  const fs   = require("fs")
+  const path = require("path")
+  fs.watch(directory, func)
+  const paths = fs.readdirSync(directory).map(n => path.join(directory, n))
+  const stats = paths.map(n => ({path: n, stat: fs.statSync(n)}))
+  const dirs  = stats.filter(stat => stat.stat.isDirectory())
+  return Promise.all([dirs.map(dir => watch(dir.path, func))])
+})
 const cli = async (args, tasks) => {
   const task = (args.length === 3) ? args[2] : "none"
   const func = (tasks[task]) ? tasks[task] : () => {
@@ -17,6 +26,11 @@ const cli = async (args, tasks) => {
     Object.keys(tasks).forEach(task => console.log(` - ${task}`))
   }; await func()
 }
+
+//------------------------------------------------------
+//  constants:
+//------------------------------------------------------
+const TYPESCRIPT = "tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --removeComments"
 
 //------------------------------------------------------
 //  tasks:
@@ -36,15 +50,15 @@ const install = async () => {
 const build = async () => {
   await shell("npm install")
   await shell("shx mkdir -p ./target")
-  await shell("tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --removeComments")
+  await shell(`${TYPESCRIPT}`)
 }
 
 const run = async () => {
   await shell("npm install")
   await shell("shx mkdir -p ./target")
-  await shell("tsc-bundle ./test/index.ts ./target/test.js --lib es2015,dom --removeComments")
+  await shell(`${TYPESCRIPT}`)
   await Promise.all([
-    shell("tsc-bundle ./test/index.ts ./target/test.js --lib es2015,dom --removeComments --watch > /dev/null"),
+    shell(`${TYPESCRIPT} --watch > /dev/null`),
     shell("fsweb ./target 5000")
   ])
 }

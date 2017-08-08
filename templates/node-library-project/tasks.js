@@ -44,7 +44,7 @@ const install = async () => {
   await shell("npm install shx -g")
   await shell("npm install typescript -g")
   await shell("npm install typescript-bundle -g")
-  await shell("npm install fsweb -g")
+  await shell("npm install fsrun -g")
 }
 
 const build = async () => {
@@ -59,7 +59,7 @@ const run = async () => {
   await shell(`${TYPESCRIPT}`)
   await Promise.all([
     shell(`${TYPESCRIPT} --watch > /dev/null`),
-    shell("fsweb ./target 5000")
+    shell("fsrun ./target [node target/test]")
   ])
 }
 

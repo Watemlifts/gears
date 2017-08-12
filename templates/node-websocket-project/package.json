@@ -1,5 +1,5 @@
 {
-  "name": "server",
+  "name": "node-websocket-project",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -7,19 +7,10 @@
     "start": "node tasks start",
     "build": "node tasks build"
   },
-  "keywords": [],
   "author": "sinclairzx81",
   "license": "MIT",
-  "dependencies": {
-    "uuid": "^3.1.0",
-    "ws": "^3.0.0"
-  },
   "devDependencies": {
-    "@types/uuid": "^3.4.0",
-    "@types/ws": "^3.0.0",
     "fsrun": "^0.9.4",
-    "shx": "^0.2.2",
-    "typescript": "^2.4.2",
-    "typescript-bundle": "^0.8.6"
+    "shx": "^0.2.2"
   }
 }

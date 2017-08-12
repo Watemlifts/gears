@@ -1,5 +1,5 @@
 server/node_modules
-server/target/
+server/index.js
 
 client/node_modules
-client/target/index.js
+client/dist/index.js

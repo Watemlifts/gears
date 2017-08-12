@@ -33,7 +33,7 @@ const server = new Server({
 })
 
 server.request((request, response, sockets) => {
-  response.end("socket: server")
+  response.end("node-websocket-project")
 })
 
 server.connect((socket, sockets) => {

@@ -2,16 +2,19 @@
   "name": "client",
   "version": "1.0.0",
   "description": "",
-  "main": "./target/index.js",
   "scripts": {
-    "clean": "shx rm -rf ./target/index.js && shx rm -rf ./node_modules",
-    "build": "tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom",
-    "watch": "tsc-bundle ./src/index.ts ./target/index.js --lib es2015,dom --watch",
-    "start": "fsweb ./target"
+    "clean": "node tasks clean",
+    "start": "node tasks start",
+    "build": "node tasks build"
   },
-  "keywords": [
-    "server"
-  ],
   "author": "sinclairzx81",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/uuid": "^3.4.0",
+    "@types/ws": "^3.0.0",
+    "fsweb": "^0.8.6",
+    "shx": "^0.2.2",
+    "typescript": "^2.4.2",
+    "typescript-bundle": "^0.8.6"
+  }
 }

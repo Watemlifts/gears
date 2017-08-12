@@ -31,33 +31,35 @@ const cli = async (args, tasks) => {
 }
 
 //------------------------------------------------------
-// tasks:
+//  constants:
+//------------------------------------------------------
+
+const TYPESCRIPT_SOURCE = "tsc-bundle --project ./src/tsconfig.json"
+
+//------------------------------------------------------
+//  tasks:
 //------------------------------------------------------
 
 const clean = async() => {
-  await shell("cd ./client && npm run clean")
-  await shell("cd ./server && npm run clean")
+  await shell("shx rm -rf ./index.js")
   await shell("shx rm -rf ./node_modules")
 }
 
 const build = async () => {
-  await shell("cd ./client && npm run build")
-  await shell("cd ./server && npm run build")
+  await shell("npm install")
+  await shell(`${TYPESCRIPT_SOURCE}`)
 }
 
 const start = async () => {
-  await shell("npm install")
+  await build()
   await Promise.all([
-    shell("cd ./client && npm run start"),
-    shell("cd ./server && npm run start"),
-    shell("fsrun ./server/index.js [shx touch ./client/dist/index.js]")
+    shell(`${TYPESCRIPT_SOURCE} --watch`),
+    shell("fsweb ./dist 5000")
   ])
 }
-
 //------------------------------------------------------
 //  cli:
 //------------------------------------------------------
-
 cli(process.argv, {
   clean,
   build,

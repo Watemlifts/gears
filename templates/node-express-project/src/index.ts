@@ -26,5 +26,14 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-console.log("hello world")
+import * as express from "express"
+import * as http    from "http"
+import * as path    from "path"
+
+const app    = express()
+const server = http.createServer(app)
+
+app.use(express.static(path.join(__dirname, "public")))
+
+server.listen(5000)
 

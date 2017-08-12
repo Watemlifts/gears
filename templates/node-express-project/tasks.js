@@ -30,42 +30,27 @@ const cli = async (args, tasks) => {
 //----------------------------------------------------------
 // constants:
 //----------------------------------------------------------
-const TYPESCRIPT_SERVER = "tsc-bundle ./index.ts ./index.js --removeComments"
-const TYPESCRIPT_CLIENT = "tsc-bundle ./public/scripts/app/index.ts ./public/scripts/app/index.js --removeComments --lib es2015,dom"
+
+const TYPESCRIPT_SRC = "tsc-bundle --project ./src/tsconfig.json"
 
 //----------------------------------------------------------
 // tasks:
 //----------------------------------------------------------
-const install = async () => {
-  await shell("npm install shx -g")
-  await shell("npm install typescript -g")
-  await shell("npm install typescript-bundle -g")
-  await shell("npm install fsrun -g")
-}
+
 const clean = async() => {
-  await shell("shx rm -rf ./node_modules")
   await shell("shx rm -rf ./index.js")
-  await shell("shx rm -rf ./public/scripts/bootstrap")
-  await shell("shx rm -rf ./public/scripts/app/index.js")
+  await shell("shx rm -rf ./node_modules")
 }
+
 const build = async () => {
   await shell("npm install")
-  // install bootstrap
-  await shell("npm install bootstrap")
-  await shell("mkdir ./public/scripts/bootstrap")
-  await shell("shx cp -rf ./node_modules/bootstrap/dist/css   ./public/scripts/bootstrap/css")
-  await shell("shx cp -rf ./node_modules/bootstrap/dist/fonts ./public/scripts/bootstrap/fonts")
-  await shell("shx cp -rf ./node_modules/bootstrap/dist/js    ./public/scripts/bootstrap/js")
-  await shell("npm uninstall bootstrap")
-
-  await shell(`${TYPESCRIPT_SERVER}`)
-  await shell(`${TYPESCRIPT_CLIENT}`)
+  await shell(`${TYPESCRIPT_SRC}`)
 }
-const run = async () => {
+
+const start = async () => {
   await build()
   await Promise.all([
-    shell(`${TYPESCRIPT_SERVER} --watch`),
-    shell(`${TYPESCRIPT_CLIENT} --watch`),
+    shell(`${TYPESCRIPT_SRC} --watch`),
     shell("fsrun ./ [node index.js]")
   ])
 }
@@ -74,8 +59,7 @@ const run = async () => {
 //  cli:
 //------------------------------------------------------
 cli(process.argv, {
-  install,
   clean,
   build,
-  run
+  start
 }).catch(console.log)

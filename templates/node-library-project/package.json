@@ -2,9 +2,13 @@
   "name": "project-name",
   "version": "1.0.0",
   "description": "project-name",
-  "main": "./index.js",
-  "test": "node ./test.js",
-  "scripts": {},
+  "test": "node test",
+  "scripts": {
+    "clean": "node tasks clean",
+    "test": "node tasks test",
+    "run": "node tasks run",
+    "build": "node tasks build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/sinclairzx81/project-name"
@@ -12,6 +16,10 @@
   "author": "sinclairzx81",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^8.0.7"
+    "@types/node": "^8.0.7",
+    "fsrun": "^0.9.4",
+    "shx": "^0.2.2",
+    "typescript": "^2.4.2",
+    "typescript-bundle": "^0.8.6"
   }
 }

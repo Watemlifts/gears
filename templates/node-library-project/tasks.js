@@ -42,16 +42,9 @@ const TYPESCRIPT_TEST   = "tsc-bundle --project ./test/tsconfig.json"
 //------------------------------------------------------
 
 const clean = async () => {
-  await shell("shx rm -rf ./node_modules"),
   await shell("shx rm -rf ./index.js")
   await shell("shx rm -rf ./test.js")
-}
-
-const install = async () => {
-  await shell("npm install shx -g")
-  await shell("npm install typescript -g")
-  await shell("npm install typescript-bundle -g")
-  await shell("npm install fsrun -g")
+  await shell("shx rm -rf ./node_modules")
 }
 
 const test = async () => {
@@ -81,7 +74,6 @@ const build = async () => {
 //  cli:
 //------------------------------------------------------
 cli(process.argv, {
-  install,
   clean,
   test,
   run,

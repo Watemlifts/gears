@@ -29,3 +29,4 @@ THE SOFTWARE.
 import * as app from "../src/index"
 
 app.helloworld()
+

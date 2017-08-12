@@ -2,8 +2,9 @@
   "name": "project-name",
   "version": "1.0.0",
   "description": "project-name",
-  "main": "./target/index.js",
-  "test": "node ./target/test.js",
+  "main": "./index.js",
+  "test": "node ./test.js",
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/sinclairzx81/project-name"

@@ -1,6 +1,7 @@
 //------------------------------------------------------
 // task helper scripts:
 //------------------------------------------------------
+
 const shell = (command) => new Promise((resolve, reject) => {
   const { spawn } = require('child_process')
   const windows = /^win/.test(process.platform)
@@ -10,6 +11,7 @@ const shell = (command) => new Promise((resolve, reject) => {
   ls.stderr.pipe(process.stderr)
   ls.on('close', (code) => resolve(code))
 })
+
 const watch = (directory, func) => new Promise((resolve, reject) => {
   const fs   = require("fs")
   const path = require("path")
@@ -19,6 +21,7 @@ const watch = (directory, func) => new Promise((resolve, reject) => {
   const dirs  = stats.filter(stat => stat.stat.isDirectory())
   return Promise.all([dirs.map(dir => watch(dir.path, func))])
 })
+
 const cli = async (args, tasks) => {
   const task = (args.length === 3) ? args[2] : "none"
   const func = (tasks[task]) ? tasks[task] : () => {
@@ -30,14 +33,18 @@ const cli = async (args, tasks) => {
 //------------------------------------------------------
 //  constants:
 //------------------------------------------------------
-const TYPESCRIPT = "tsc-bundle ./test/index.ts ./target/test.js --lib es2015,dom --removeComments"
+
+const TYPESCRIPT_SOURCE = "tsc-bundle --project ./src/tsconfig.json"
+const TYPESCRIPT_TEST   = "tsc-bundle --project ./test/tsconfig.json"
 
 //------------------------------------------------------
 //  tasks:
 //------------------------------------------------------
+
 const clean = async () => {
   await shell("shx rm -rf ./node_modules"),
-  await shell("shx rm -rf ./target/index.js")
+  await shell("shx rm -rf ./index.js")
+  await shell("shx rm -rf ./test.js")
 }
 
 const install = async () => {
@@ -47,20 +54,27 @@ const install = async () => {
   await shell("npm install fsrun -g")
 }
 
-const build = async () => {
+const test = async () => {
   await shell("npm install")
-  await shell("shx mkdir -p ./target")
-  await shell(`${TYPESCRIPT}`)
+  await shell(`${TYPESCRIPT_TEST}`)
+  await Promise.all([
+    shell(`${TYPESCRIPT_TEST} --watch > /dev/null`),
+    shell("fsrun ./test.js [node test.js]")
+  ])
 }
 
 const run = async () => {
   await shell("npm install")
-  await shell("shx mkdir -p ./target")
-  await shell(`${TYPESCRIPT}`)
+  await shell(`${TYPESCRIPT_SOURCE}`)
   await Promise.all([
-    shell(`${TYPESCRIPT} --watch > /dev/null`),
-    shell("fsrun ./target [node target/test]")
+    shell(`${TYPESCRIPT_SOURCE} --watch > /dev/null`),
+    shell("fsrun ./index.js [node index.js]")
   ])
+}
+
+const build = async () => {
+  await shell("npm install")
+  await shell(`${TYPESCRIPT_SOURCE}`)
 }
 
 //------------------------------------------------------
@@ -69,6 +83,7 @@ const run = async () => {
 cli(process.argv, {
   install,
   clean,
-  build,
+  test,
   run,
+  build,
 }).catch(console.log)

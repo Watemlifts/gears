@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "module"        : "amd",
+    "outFile"       : "../dist/index.js",
+    "allowJs"       : true,
+    "jsx"           : "react",
+    "removeComments": true
+  }, "files": [
+    "./index.tsx"
+  ]
+}

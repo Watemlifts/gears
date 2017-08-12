@@ -61,7 +61,7 @@ export class Header extends React.Component {
   render() {
     return (
       <div className="header">
-        <h1>gears</h1>
+        <h1>browser-react-project</h1>
         <div className="nav">
           <ul>
             <li><Link to="/">home</Link></li>

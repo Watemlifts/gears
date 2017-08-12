@@ -5,8 +5,7 @@
   "test": "node test",
   "scripts": {
     "clean": "node tasks clean",
-    "test": "node tasks test",
-    "run": "node tasks run",
+    "start": "node tasks start",
     "build": "node tasks build"
   },
   "repository": {

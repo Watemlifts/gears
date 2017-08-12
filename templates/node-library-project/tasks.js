@@ -47,21 +47,12 @@ const clean = async () => {
   await shell("shx rm -rf ./node_modules")
 }
 
-const test = async () => {
+const start = async () => {
   await shell("npm install")
   await shell(`${TYPESCRIPT_TEST}`)
   await Promise.all([
     shell(`${TYPESCRIPT_TEST} --watch > /dev/null`),
     shell("fsrun ./test.js [node test.js]")
-  ])
-}
-
-const run = async () => {
-  await shell("npm install")
-  await shell(`${TYPESCRIPT_SOURCE}`)
-  await Promise.all([
-    shell(`${TYPESCRIPT_SOURCE} --watch > /dev/null`),
-    shell("fsrun ./index.js [node index.js]")
   ])
 }
 
@@ -75,7 +66,6 @@ const build = async () => {
 //------------------------------------------------------
 cli(process.argv, {
   clean,
-  test,
-  run,
-  build,
+  start,
+  build
 }).catch(console.log)

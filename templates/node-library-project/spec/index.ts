@@ -4,7 +4,7 @@ project-name
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Haydn Paterson (sinclair) <haydn.developer@gmail.com>
+Copyright (c) 2016 Haydn Paterson (sinclair) <haydn.developer@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,7 +26,11 @@ THE SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-import * as app from "../src/index"
+import { helloworld } from "../src/index"
+import { expect }     from "chai"
 
-app.helloworld()
-
+describe("index", () => {
+  it("should return hello world", () => {
+    expect(helloworld()).to.eq("hello world")
+  })
+})

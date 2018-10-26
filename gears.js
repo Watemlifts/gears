@@ -101,7 +101,7 @@ const copy = (manifest) => {
         break;
       case "file":
         console.log(`copy: ${operation.to}`)
-        const buffer = new Buffer(BUFFER_LENGTH)
+        const buffer = Buffer.alloc(BUFFER_LENGTH)
         const fread  = fs.openSync(operation.from, 'r')
         const fwrite = fs.openSync(operation.to,   'w')
         let read = 1

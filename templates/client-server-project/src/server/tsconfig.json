@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "target": "esnext",
+    "lib": ["dom", "esnext"],
+    "outFile": "../../bin/index.js",
+    "removeComments": true
+  },
+  "files": ["./index.ts"]
+}

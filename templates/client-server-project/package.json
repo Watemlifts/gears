@@ -1,0 +1,19 @@
+{
+  "name": "client-server-project",
+  "version": "0.0.1",
+  "description": "client server project",
+  "scripts": {
+    "clean": "node tasks clean",
+    "start": "node tasks start"
+  },
+  "author": "sinclairzx81",
+  "license": "MIT",
+  "devDependencies": {
+    "fsrun": "^0.9.4",
+    "fsweb": "^0.8.7",
+    "shx": "^0.2.2",
+    "typescript": "^3.2.2",
+    "typescript-bundle": "^0.8.9"
+  },
+  "dependencies": {}
+}

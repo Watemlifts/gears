@@ -6,6 +6,10 @@
     "clean": "node tasks clean",
     "start": "node tasks start"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sinclairzx81/project-name"
+  },
   "author": "sinclairzx81",
   "license": "MIT",
   "devDependencies": {

@@ -16,8 +16,8 @@
     "fsrun": "^0.9.4",
     "fsweb": "^0.8.7",
     "shx": "^0.2.2",
-    "typescript": "^3.2.2",
-    "typescript-bundle": "^0.8.9"
+    "typescript": "^3.2.4",
+    "typescript-bundle": "^1.0.1"
   },
   "dependencies": {}
 }

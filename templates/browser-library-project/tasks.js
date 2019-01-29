@@ -34,7 +34,7 @@ const cli = async (args, tasks) => {
 //  constants:
 //------------------------------------------------------
 
-const TYPESCRIPT_SRC = "tsc-bundle --project ./src/tsconfig.json"
+const TYPESCRIPT_SRC = "tsc-bundle ./src/tsconfig.json"
 
 //------------------------------------------------------
 //  tasks:

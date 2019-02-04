@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "project-name",
   "scripts": {
-    "clean": "node tasks clean",
-    "build": "node tasks build",
-    "start": "node tasks start"
+    "clean": "smoke-task clean",
+    "build": "smoke-task build",
+    "start": "smoke-task start"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   "devDependencies": {
     "fsweb": "^0.8.6",
     "shx": "^0.2.2",
+    "smoke-task": "^1.0.0",
     "typescript": "^3.2.4",
     "typescript-bundle": "^1.0.1"
   }

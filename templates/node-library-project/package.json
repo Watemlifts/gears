@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "project-name",
   "scripts": {
-    "clean": "node tasks clean",
-    "start": "node tasks start",
-    "build": "node tasks build",
-    "spec": "node tasks spec",
-    "test": "npm run spec",
-    "lint": "node tasks lint"
+    "clean": "smoke-task clean",
+    "start": "smoke-task start",
+    "build": "smoke-task build",
+    "spec":  "smoke-task spec"
   },
   "repository": {
     "type": "git",
@@ -24,8 +22,9 @@
     "fsrun": "^0.9.4",
     "mocha": "^5.2.0",
     "shx": "^0.2.2",
+    "smoke-task": "^1.0.0",
     "tslint": "^5.10.0",
     "typescript": "^3.2.4",
-    "typescript-bundle": "^1.0.0"
+    "typescript-bundle": "^1.0.7"
   }
 }

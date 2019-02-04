@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "client server project",
   "scripts": {
-    "clean": "node tasks clean",
-    "start": "node tasks start"
+    "clean": "smoke-task clean",
+    "start": "smoke-task start"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
     "fsrun": "^0.9.4",
     "fsweb": "^0.8.7",
     "shx": "^0.2.2",
+    "smoke-task": "^1.0.0",
     "typescript": "^3.2.4",
     "typescript-bundle": "^1.0.1"
   },

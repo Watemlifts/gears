@@ -1,4 +1,4 @@
-const TYPESCRIPT_SRC = 'tsc-bundle ./src/tsconfig.json'
+const BUILD_SOURCE = 'tsc-bundle ./src/tsconfig.json'
 
 export async function clean() {
   await shell('shx rm -rf ./dist/index.js')
@@ -6,15 +6,12 @@ export async function clean() {
 }
 
 export async function build() {
-  await shell('npm install')
-  await shell(`${TYPESCRIPT_SRC}`)
+  await shell(`${BUILD_SOURCE}`)
 }
 
 export async function start() {
-  await shell('npm install')
-  await shell(`${TYPESCRIPT_SRC}`)
   await Promise.all([
-    shell(`${TYPESCRIPT_SRC} --watch > /dev/null`),
+    shell(`${BUILD_SOURCE} --watch > /dev/null`),
     shell('fsweb ./dist 5000')
   ])
 }

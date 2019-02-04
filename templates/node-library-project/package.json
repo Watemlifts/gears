@@ -4,9 +4,9 @@
   "description": "project-name",
   "scripts": {
     "clean": "smoke-task clean",
-    "start": "smoke-task start",
-    "build": "smoke-task build",
-    "spec":  "smoke-task spec"
+    "start": "npm install && smoke-task start",
+    "build": "npm install && smoke-task build",
+    "spec": "npm install && smoke-task spec"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,4 @@
 // note: the client project is listening on port 5000
-// so the server should listen and expose its API's on 
-// other ports.
+// so the server should listen on port 5001 and up.
 
-console.log('hello world')
+console.log('server: hello world')

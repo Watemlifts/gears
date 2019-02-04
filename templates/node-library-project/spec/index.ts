@@ -24,11 +24,12 @@ SOFTWARE.
 
 ---------------------------------------------------------------------------*/
 
-import { helloworld } from "../src/index"
-import { expect }     from "chai"
+import { start }  from "../src/index"
+import { expect } from "chai"
 
 describe("index", () => {
-  it("should return hello world", () => {
-    expect(helloworld()).to.eq("hello world")
+  it("example assert", async () => {
+    await start()
+    expect("hello world").to.eq("hello world")
   })
 })

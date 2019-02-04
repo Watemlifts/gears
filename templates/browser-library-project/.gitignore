@@ -1,3 +1,2 @@
 node_modules
-target/index.js
-target/test.js
+dist/index.js

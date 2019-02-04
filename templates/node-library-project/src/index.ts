@@ -1,1 +1,5 @@
-console.log('hello world')
+export async function start() {
+  console.log('hello world')
+}
+start()
+

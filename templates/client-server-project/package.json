@@ -4,7 +4,7 @@
   "description": "client server project",
   "scripts": {
     "clean": "smoke-task clean",
-    "start": "smoke-task start"
+    "start": "npm install && smoke-task start"
   },
   "repository": {
     "type": "git",

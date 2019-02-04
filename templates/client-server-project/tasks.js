@@ -5,12 +5,8 @@ export async function clean() {
 }
 
 export async function start() {
-  // pre-build project
-  await shell('npm install')
   await shell('tsc-bundle ./src/client/tsconfig.json')
   await shell('tsc-bundle ./src/server/tsconfig.json')
-
-  // start watchers
   await Promise.all([
     shell('tsc-bundle ./src/client/tsconfig.json --watch'),
     shell('tsc-bundle ./src/server/tsconfig.json --watch'),
